@@ -25,7 +25,6 @@ let wrongFormatError = document.querySelector(".wrong");
 let emptyErrorNumber = document.querySelector(
   "#number + .blank"
 );
-let isWrongFormat = false;
 
 numberInput.addEventListener("input", (e) => {
   errorList["number"] = false;
@@ -37,6 +36,11 @@ numberInput.addEventListener("input", (e) => {
     "$1 "
   );
   numberShow.innerHTML = numberInput.value;
+});
+
+let isWrongFormat = false;
+
+numberInput.addEventListener("blur", () => {
   let check = numberInput.value.split(" ");
   if (
     /[^\d\s]/gi.test(numberInput.value) ||
@@ -144,10 +148,6 @@ submitButton.addEventListener("click", () => {
   emptyErrors.forEach((error) =>
     error.classList.remove("active")
   );
-
-  document
-    .querySelectorAll(".error")
-    .forEach((error) => error.classList.remove("error"));
 
   numberInput.value == ""
     ? (errorList["number"] = true)
