@@ -37,9 +37,11 @@ numberInput.addEventListener("input", (e) => {
     "$1 "
   );
   numberShow.innerHTML = numberInput.value;
+  let check = numberInput.value.split(" ");
   if (
     /[^\d\s]/gi.test(numberInput.value) ||
-    numberInput.value.length < 19
+    numberInput.value.length < 19 ||
+    check.length != 4
   ) {
     numberInput.classList.add("error");
     wrongFormatError.classList.add("active");
